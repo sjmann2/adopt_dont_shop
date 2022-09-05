@@ -21,13 +21,6 @@ class ApplicationsController < ApplicationController
       flash[:alert] = "Error: #{error_message(application.errors)}"
     end
   end
-      
-    # if params[:name].blank? || params[:street_address].blank? || params[:city].blank? || params[:state].blank? || params[:zipcode].blank? || params[:status].blank?
-      
-       #danger: "Please fill in all fields"
-      
-    # else
-      # application = Application.create!(applications_params)
 
   def update
     @application = Application.find(params[:id])
