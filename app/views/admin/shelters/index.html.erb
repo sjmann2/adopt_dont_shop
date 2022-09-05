@@ -1,9 +1,13 @@
 <%= render partial: 'shelter' %>
-
+<br>
+<br>
 <h2>Shelters with Pending Applications</h2>
-
+<br>
 <div id='pending-apps'>
-<% @shelters_with_apps.each do |shelter| %>
-  <p> <%= shelter.name %> </p>
-  <% end %>
+
+  <ul class="list-group">
+    <% @shelters_with_apps.each do |shelter| %>
+      <li class="list-group-item"> <%= shelter.name %> </li>
+    <% end %>
+  </ul>
 </div>
