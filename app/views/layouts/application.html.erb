@@ -42,17 +42,7 @@
         </ul>
       </div>
     </nav>
-        
-
-  
-    <% if alert %>
-      <% flash.each do |type, msg| %>
-        <div>
-          <h1>**<%= msg %>**</h1>
-        </div>
-        <% end %>
-    <% end %>
-    
+    <%= render 'flash_messages' %>
     <%= yield %>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
