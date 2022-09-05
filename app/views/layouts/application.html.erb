@@ -19,7 +19,31 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     </div>
   </head>
+
   <body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="/" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="/pets" class="nav-link">Pets</a>
+          </li>
+          <li class="nav-item">
+            <a href="/shelters" class="nav-link">Shelters</a>
+          </li>
+          <li class="nav-item">
+            <a href="/veterinarians" class="nav-link">Veterinarians</a>
+          </li>
+          <li class="nav-item">
+            <a href="/veterinary_offices" class="nav-link">Veterinary Offices</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+        
+
   
     <% if alert %>
       <% flash.each do |type, msg| %>
@@ -29,15 +53,7 @@
         <% end %>
     <% end %>
     
-    <div class="container"> %>
-    <section>
-      <p><%= link_to "Pets", "/pets"</p> %>
-      <p><%= link_to "Shelters", "/shelters"</p> %>
-      <p><%= link_to "Veterinarians", "/veterinarians"</p> %>
-      <p><%= link_to "Veterinary Offices", "/veterinary_offices"</p> %>
-    </section>
-    </div>
-    <%= yield
+    <%= yield %>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
