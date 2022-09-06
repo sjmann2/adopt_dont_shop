@@ -1,3 +1,4 @@
+<div class="pets">
 <h1>All pets</h1>
 
 <%= link_to "Start an Application", "/applications/new" %>
@@ -9,37 +10,26 @@
   <%= f.submit "Search" %>
 <% end %>
 
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th> Name </th>
-      <th> Age </th>
-      <th> Breed </th>
-      <th> Adoptable </th>
-      <th> Edit/Delete </th>
-    </tr>
-  </thead>
+<div class="container" > 
+    <div class="row">
 
-  <tbody>
-
+    
     <% @pets.each do |pet| %>
-    <tr>
-      <td><%= pet.name %></td>
-    
-      <td><%= pet.age %></td>
-    
-      <td><%= pet.breed %></td>
-  
-      <td><%= pet.adoptable %> </td>
-      <td><%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit" %>
-      <br>
-      <%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %></td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>You can find <%= pet.name %> at <%= pet.shelter_name %>!</td>
-    <% end %>
-    </tr>
-  </tfoot>
-</table>
+
+        <div class="col-md-3"> 
+        <h5>Name:</h5> <p><%= pet.name %></p>
+        
+        <h5>Age:</h5> <p><%= pet.age %></p>
+        
+        <h5>Breed:</h5> <p><%= pet.breed %></p>
+        
+        <h5>Adoptable:</h5> <p><%= pet.adoptable %> </p>
+       
+        <p><%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %></p>
+        <p><%= link_to "Edit #{pet.name}", "/pets/#{pet.id}/edit"%></p>
+        <h5> You can find <%= pet.name %> at <%= pet.shelter_name %>! <h5>   
+    </div>
+  <%end %>
+</div>
+
+
