@@ -47,7 +47,7 @@ RSpec.describe Pet, type: :model do
 
     describe '#application_status_pet_name' do
       it 'returns the pet for specified application' do
-        expect(Pet.application_status_pet_name(@application.id).first.id).to eq(@pet_application.id)
+        expect(Pet.application_status_pet_name(@application.id).first.name).to eq(@pet_1.name)
       end
     end
 
