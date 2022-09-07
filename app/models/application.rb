@@ -8,4 +8,12 @@ class Application < ApplicationRecord
   validates :description, presence: true
   has_many :pet_applications
   has_many :pets, through: :pet_applications
+
+  def render_description?
+    self.pets.count >=1 && self.status == 'In Progress'
+  end
+
+  def render_search?
+    self.status == 'In Progress'
+  end
 end

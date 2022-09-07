@@ -45,6 +45,7 @@ RSpec.describe 'new application' do
             click_on "Submit"
 
             expect(page).to have_content("Error: Name can't be blank, Street address can't be blank, City can't be blank, Zipcode can't be blank, Zipcode is not a number, Description can't be blank")
+            expect(page).to have_button("Submit")
           end
         end
       end

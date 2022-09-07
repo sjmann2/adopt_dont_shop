@@ -3,6 +3,4 @@ class PetApplication < ApplicationRecord
   validates :application_id, presence: true
   belongs_to :application
   belongs_to :pet
-
-
 end
