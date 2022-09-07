@@ -13,11 +13,8 @@ class Admin::ApplicationsController < ApplicationController
       else
         @pet_application.update(application_status: 'Rejected')
       end
-# require "pry"; binding.pry
-    if @application.status_approve_check
-      @application.update!(status: 'Approved')
-      @application.save
-    end
+      @application
+      @application.status_approve_check
     redirect_to "/admin/applications/#{@application.id}"
   end
 end

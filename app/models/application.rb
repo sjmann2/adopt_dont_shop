@@ -16,13 +16,15 @@ class Application < ApplicationRecord
   def render_search?
     self.status == 'In Progress'
   end
-  
+
   def status_approve_check
-    # require "pry"; binding.pry
-    if self.pet_applications.map { |petapp| petapp.application_status}.uniq == ['Approved']
+
+    if self.pet_applications.where(application_status: 'Approved').count == self.pet_applications.count
       self.update(status: 'Approved')
       self.save
-      # require "pry"; binding.pry
+    elsif self.pet_applications.where(application_status: 'Rejected').count >= 1
+      self.update(status: 'Rejected')
+      self.save
     end
 
   end
