@@ -9,7 +9,7 @@
 
 <div id="description">
 
-  <% if @application.pets.size >= 1 && @application.status == "In Progress" %>
+  <% if @application.render_description? %>
     <%= render partial: 'form', locals: { path: "/applications/#{@application.id}/update",
                                           method: :patch,
                                           label: :description, 
@@ -19,7 +19,7 @@
   </div>
 
   <div id="search">
-  <% if @application.status == "In Progress" %>
+  <% if @application.render_search? %>
 
     <h3>Add a Pet to this Application</h3>
 
