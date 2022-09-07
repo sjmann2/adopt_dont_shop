@@ -190,7 +190,7 @@ RSpec.describe 'the admin application view page' do
       expect(page).to have_content('Approved')
       expect(page).to_not have_content('Rejected')
 # require "pry"; binding.pry
-      expect(@application_5.status).to eq('Approved')
+      expect(page).to have_content('Applicaion: Approved')
     end
 
   end
