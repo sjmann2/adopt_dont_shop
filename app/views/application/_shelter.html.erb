@@ -1,6 +1,8 @@
 <h1>All Shelters</h1>
-
+<br>
 <%= link_to "Sort by number of pets", "/shelters?sort=pet_count" %>
+<br>
+<br>
 
 <%= form_with url: "/shelters", method: :get, local: true do |f| %>
   <%= f.label :search %>
@@ -8,11 +10,28 @@
   <%= f.submit "Search" %>
 <% end %>
 
-<% @shelters.each do |shelter| %>
-  <div id="shelter-<%= shelter.id %>">
-    <h3><%= shelter.name %></h3>
-    <p>Created at: <%= shelter.created_at %></p>
-    <%= link_to "Update #{shelter.name}", "/shelters/#{shelter.id}/edit" %>
-    <%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %>
-  </div>
-<% end %>
+<br>
+
+<table class="table table-striped">
+  <thead  class="thead-dark">
+    <tr>
+      <th>Shelter Name </th>
+      <th>Created at </th>
+      <th> Edit/Delete </th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @shelters.each do |shelter| %>
+      <div id="shelter-<%= shelter.id %>">
+        <tr>
+          <td><%= shelter.name %></td>
+          <td><%= shelter.created_at %></td>
+          <td><%= link_to "Update #{shelter.name}", "/shelters/#{shelter.id}/edit" %>
+          <br>
+          <%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %></td>
+        </tr>
+        <% end %>
+      </div>
+    </tr>
+  </tbody>

@@ -18,7 +18,9 @@ pet_5 = shelter_3.pets.find_or_create_by!(adoptable: true, age: 6, breed: 'Huske
 pet_6 = shelter_3.pets.find_or_create_by!(adoptable: true, age: 2, breed: 'Calico', name: 'Potato Chip')
 pet_7 = shelter_3.pets.find_or_create_by!(adoptable: false, age: 5, breed: 'tuxedo shorthair', name: 'Mr. Pirate')
 pet_8 = shelter_1.pets.find_or_create_by!(adoptable: true, age: 3, breed: 'shorthair', name: 'Clawdia')
-pet_9 = shelter_1.pets.find_or_create_by!(name: 'Ann', breed: 'ragdoll', age: 5, adoptable: true)
+
+pet_9 = shelter_1.pets.find_or_create_by!(adoptable: true, age: 5, breed: 'ragdoll', name: 'Ann')
+
 
 application_1 = Application.find_or_create_by!(name: "Shelby Waters", street_address: "274 West 11th St", city: "Myers Flatt", state: "NJ", zipcode: 12447, status: "Pending", description: "I'm Lonely")
 application_2 = Application.find_or_create_by!(name: "Florence Bigsby", street_address: "202 E Washington Ave", city: "Madison", state: "WI", zipcode: 60637, status: "Pending", description: "I love cats")

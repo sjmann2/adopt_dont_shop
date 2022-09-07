@@ -12,13 +12,13 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    if params[:name].blank? || params[:street_address].blank? || params[:city].blank? || params[:state].blank? || params[:zipcode].blank? || params[:status].blank?
-      redirect_to "/applications/new"
-      flash[:alert] = "Please fill in all fields"
-    else
-      application = Application.create!(applications_params)
+    application = Application.new(application_params)
 
+    if application.save
       redirect_to "/applications/#{application.id}"
+    else
+      redirect_to "/applications/new"
+      flash[:alert] = "Error: #{error_message(application.errors)}"
     end
   end
 
@@ -31,7 +31,7 @@ class ApplicationsController < ApplicationController
   end
 
 private
-  def applications_params
+  def application_params
     params.permit(:name, :street_address, :city, :state, :zipcode, :status, :description)
   end
 end

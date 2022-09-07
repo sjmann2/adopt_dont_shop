@@ -1,3 +1,4 @@
+
 <%= render partial: 'applicants_info' %>
 
 <p>Pet(s) Applying for: </p>
@@ -9,28 +10,26 @@
 <div id="description">
 
   <% if @application.pets.size >= 1 && @application.status == "In Progress" %>
-    <%= form_with url: "/applications/#{@application.id}/update", method: :patch, local: true do |form| %>
-    <%= form.label :description, "Please describe why you would make a good home for this pet" %>
-    <br>
-    <br>
-    <%= form.text_field :description %>
-    <%= form.submit "Submit application" %>
-    <% end %>
+    <%= render partial: 'form', locals: { path: "/applications/#{@application.id}/update",
+                                          method: :patch,
+                                          label: :description, 
+                                          text: "Please describe why you would make a good home for this pet",
+                                          button_text: 'Submit application'} %>
   <% end %>
-</div>
+  </div>
 
   <div id="search">
   <% if @application.status == "In Progress" %>
 
     <h3>Add a Pet to this Application</h3>
 
-    <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
-      <%= form.label :search %>
-      <%= form.text_field :search %>
-      <%= form.submit "Search for Pet" %>
+    <%= render partial: 'form', locals: { path: "/applications/#{@application.id}",
+                                          method: :get,
+                                          label: :search,
+                                          text: 'Search for Pets',
+                                          button_text: 'Search for Pet' }%>
     <% end %>
-  <% end %>
-  </div>
+    </div>
 
 
   <div id="adoption">
