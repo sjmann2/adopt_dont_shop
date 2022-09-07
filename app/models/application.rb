@@ -16,4 +16,16 @@ class Application < ApplicationRecord
   def render_search?
     self.status == 'In Progress'
   end
+
+  def status_approve_check
+
+    if self.pet_applications.where(application_status: 'Approved').count == self.pet_applications.count
+      self.update(status: 'Approved')
+      self.save
+    elsif self.pet_applications.where(application_status: 'Rejected').count >= 1
+      self.update(status: 'Rejected')
+      self.save
+    end
+
+  end
 end

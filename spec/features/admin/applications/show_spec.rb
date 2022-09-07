@@ -25,6 +25,7 @@ RSpec.describe 'the admin application view page' do
     @application_3.pets << @pet_5
     @application_4.pets << @pet_3
     @application_5.pets << @pet_3
+    @application_5.pets << @pet_4
 
   end
 
@@ -176,5 +177,46 @@ RSpec.describe 'the admin application view page' do
       end
 
     end
+  end
+
+  describe 'an application status changing to Approved after all applications have been approved' do
+
+    it 'can approve application status after all pets are approved' do
+      visit "admin/applications/#{@application_5.id}"
+      expect(page).to have_content('Status: Pending')
+
+      within(".pet_#{@pet_3.id}") do
+        click_on 'Approve'
+      end
+
+      expect(page).to have_content('Status: Pending')
+
+      within(".pet_#{@pet_4.id}") do
+        click_on 'Approve'
+      end
+
+      expect(page).to have_content('Approved')
+      expect(page).to_not have_content('Rejected')
+
+      expect(page).to have_content('Status: Approved')
+    end
+
+    it 'can deny application status after a pet is rejected' do
+      visit "admin/applications/#{@application_5.id}"
+      expect(page).to have_content('Status: Pending')
+
+      within(".pet_#{@pet_3.id}") do
+        click_on 'Approve'
+      end
+
+      expect(page).to have_content('Status: Pending')
+
+      within(".pet_#{@pet_4.id}") do
+        click_on 'Reject'
+      end
+
+      expect(page).to have_content('Status: Rejected')
+    end
+
   end
 end
