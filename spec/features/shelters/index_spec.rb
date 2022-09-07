@@ -29,15 +29,15 @@ RSpec.describe 'the shelters index' do
     expect(mid).to appear_before(oldest)
 
     within "#shelter-#{@shelter_1.id}" do
-      expect(page).to have_content("Created at: #{@shelter_1.created_at}")
+      expect(page).to have_content("#{@shelter_1.created_at}")
     end
 
     within "#shelter-#{@shelter_2.id}" do
-      expect(page).to have_content("Created at: #{@shelter_2.created_at}")
+      expect(page).to have_content("#{@shelter_2.created_at}")
     end
 
     within "#shelter-#{@shelter_3.id}" do
-      expect(page).to have_content("Created at: #{@shelter_3.created_at}")
+      expect(page).to have_content("#{@shelter_3.created_at}")
     end
   end
 

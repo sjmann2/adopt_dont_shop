@@ -42,12 +42,10 @@ RSpec.describe 'new application' do
           it 're-renders the application form if any fields are not filled in' do
             visit '/applications/new'
 
-            fill_in("Name", with: "Shelby Waters")
-            fill_in("Street address", with: "274 West 11th St")
-
             click_on "Submit"
 
-            expect(page).to have_content("Please fill in all fields")
+            expect(page).to have_content("Error: Name can't be blank, Street address can't be blank, City can't be blank, Zipcode can't be blank, Zipcode is not a number, Description can't be blank")
+            expect(page).to have_button("Submit")
           end
         end
       end

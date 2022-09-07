@@ -1,4 +1,5 @@
 class Admin::ApplicationsController < ApplicationController
+
   def show
     @application = Application.find(params[:id])
     @pets = Pet.application_status_pet_name(@application.id)
